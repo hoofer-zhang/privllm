@@ -97,25 +97,25 @@ So **if the threat model is the LLM provider**, pure cryptography has no answer.
 
 - **Python 3.10+**. The code uses the `X | Y` union-type annotation syntax (PEP 604); 3.9 and below will not run it.
 - **OS**: Windows / macOS / Linux all work, with no system-level dependencies. Note that on Windows, key-file protection relies on directory ACLs (`chmod` is effectively a no-op); see [NOTES.md](NOTES.md).
-- **Dependencies**:
-  - `cryptography` — required. Used for FF1's AES, HKDF subkey derivation, and AES-GCM persistence of the mapping table.
-  - `requests` — only needed by `examples/ollama_backend.py`; the library itself (`privllm/`) doesn't depend on it, so redact-only usage doesn't need it.
+
+### Install from PyPI (recommended)
 
 ```bash
-pip install cryptography requests
+pip install privllm
 ```
+
+This pulls in the only runtime dependency, `cryptography`. The library itself (`privllm/`) doesn't depend on `requests` — that's only needed for [examples/ollama_backend.py](examples/ollama_backend.py), via the extra:
+
+```bash
+pip install "privllm[examples]"
+```
+
+### Install from source (development)
 
 ```bash
 git clone https://github.com/hoofer-zhang/privllm.git
 cd privllm
-```
-
-You can also install it as a library (a `pyproject.toml` is included):
-
-```bash
-pip install .             # regular install
 pip install -e .          # editable: code changes take effect immediately
-pip install .[examples]   # also installs requests for the Ollama example backend
 ```
 
 Or skip installation and import straight from the repo directory.

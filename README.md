@@ -97,25 +97,25 @@ print(result["restored"])  # 拿回来的：张伟的手机号是 13812345678
 
 - **Python 3.10+**。代码用了 `X | Y` 联合类型注解语法（PEP 604），3.9 及以下运行不了。
 - **操作系统**：Windows / macOS / Linux 均可，无系统级依赖。注意 Windows 上密钥文件的保护依赖目录 ACL（`chmod` 基本无效），详见 [NOTES.md](NOTES.md)。
-- **依赖**：
-  - `cryptography` —— 必需。用于 FF1 的 AES、HKDF 子密钥派生、映射表的 AES-GCM 落盘。
-  - `requests` —— 仅 `examples/ollama_backend.py` 需要；库本身（`privllm/`）不依赖它，只做脱敏不调模型就不必装。
+
+### 从 PyPI 安装（推荐）
 
 ```bash
-pip install cryptography requests
+pip install privllm
 ```
+
+会自动带上唯一的运行依赖 `cryptography`。库本身（`privllm/`）不依赖 `requests`——只有用 [examples/ollama_backend.py](examples/ollama_backend.py) 时才需要，装 extra 即可：
+
+```bash
+pip install "privllm[examples]"
+```
+
+### 从源码安装（开发）
 
 ```bash
 git clone https://github.com/hoofer-zhang/privllm.git
 cd privllm
-```
-
-也可以作为库安装（已带 `pyproject.toml`）：
-
-```bash
-pip install .             # 常规安装
 pip install -e .          # 开发态：改代码即时生效
-pip install .[examples]   # 连同 Ollama 示例后端需要的 requests 一起装
 ```
 
 或者不安装，直接从仓库目录 import。
