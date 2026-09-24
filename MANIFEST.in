@@ -1,0 +1,2 @@
+include README.md README.en.md DESIGN.md NOTES.md LICENSE
+recursive-include examples *.py
