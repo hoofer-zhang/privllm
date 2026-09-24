@@ -106,7 +106,7 @@ pip install cryptography requests
 ```
 
 ```bash
-git clone <this-repo>
+git clone https://github.com/hoofer-zhang/privllm.git
 cd privllm
 ```
 
